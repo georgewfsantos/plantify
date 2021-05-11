@@ -11,11 +11,13 @@ import {
 import { Feather } from "@expo/vector-icons";
 
 import wateringCanImage from "../assets/watering.png";
-import Button from "../components/Button";
 import colors from "../styles/colors";
 import fonts from "../styles/fonts";
+import { useNavigation } from "@react-navigation/core";
 
 const Welcome: React.FC = () => {
+  const navigation = useNavigation();
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Gerencie suas plantas de forma fácil</Text>
@@ -31,7 +33,11 @@ const Welcome: React.FC = () => {
         que precisar
       </Text>
 
-      <TouchableOpacity style={styles.button} activeOpacity={0.8}>
+      <TouchableOpacity
+        style={styles.button}
+        activeOpacity={0.8}
+        onPress={() => navigation.navigate("User Identification")}
+      >
         <Text style={styles.buttonText}>
           {" "}
           <Feather name="chevron-right" size={32} />
@@ -51,7 +57,6 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: fonts.heading,
     fontSize: 28,
-    fontWeight: "bold",
     textAlign: "center",
     color: colors.heading,
     maxWidth: 200,

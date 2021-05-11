@@ -5,7 +5,9 @@ import {
   StyleSheet,
   TouchableOpacityProps,
 } from "react-native";
+
 import colors from "../styles/colors";
+import fonts from "../styles/fonts";
 
 interface ButtonProps extends TouchableOpacityProps {
   title: string;
@@ -13,23 +15,26 @@ interface ButtonProps extends TouchableOpacityProps {
 }
 
 const Button: React.FC<ButtonProps> = ({ title, ...rest }) => {
-  return <Text>Button</Text>;
+  return (
+    <TouchableOpacity style={styles.container} {...rest}>
+      <Text style={styles.text}>{title}</Text>
+    </TouchableOpacity>
+  );
 };
 
 const styles = StyleSheet.create({
-  button: {
+  container: {
     backgroundColor: colors.green,
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 16,
-    marginBottom: 10,
-    width: 56,
     height: 56,
   },
-  buttonText: {
+  text: {
     color: colors.white,
     fontWeight: "bold",
-    fontSize: 24,
+    fontSize: 16,
+    fontFamily: fonts.heading,
   },
 });
 
